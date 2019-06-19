@@ -1,0 +1,97 @@
+---
+title: "Classification of Heart Disease Within Individuals"
+subtitle: "MATH2319 Machine Learning"
+author: "Abhishekh Shankar s3652116 & Eric Bolitho s3455890"
+output:
+  pdf_document:
+    fig_caption: yes
+    number_sections: yes
+    toc: no
+    toc_depth: 3
+linkcolor: blue
+documentclass: article
+bibliography: references.bib
+---
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+# Introduction
+The objective of this project is to predict whether or not a patient has heart disease indicated as an integer value from 0 to 1 for the absense and presence of heart disease respectively. The dataset was sourced from the UCI Machine Learning Repository [^1] [@heartDisease_uci].
+
+Phase One saw the data being cleaned, with absent values being removed if the total percentage of absent values was under a predefined threshold of 60%, or the entire column being removed if it was over 60%. Phase Two covers model building and analysis with Section Two covering the methodology taken in this phase, Section Three covering ... 
+
+[^1]: https://archive.ics.uci.edu/ml/datasets/Heart+Disease
+
+# Methodology
+
+
+# Hyperparameter Fine-Tuning
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, cache=TRUE}
+library(mlr)
+library(tidyverse)
+data <- read.csv('cleanHeartData.csv')
+
+# Split into training/testing data.
+training_index <- sample(nrow(data)*0.70)
+test_index <- setdiff(seq(1:nrow(data)), training_index)
+
+# Get the training and test data.
+training_data <- data[training_index, ]
+test_data <- data[test_index, ]
+
+# Modelling
+task <- makeClassifTask(data = training_data, target = 'num', id= 'X')
+
+# Configure learners with probability type
+NB.lrn <- makeLearner('classif.naiveBayes', predict.type='prob') #baseline
+RF.lrn <- makeLearner('classif.randomForest', predict.type='prob')
+KNN.lrn <- makeLearner('classif.kknn', predict.type='prob')
+
+# KNN
+ps1 <- makeParamSet(
+  makeDiscreteParam('k', values = seq(2, 20, by = 1))
+)
+
+
+
+```
+
+
+## Naive Bayes
+
+## Random Forest
+
+## K-Nearest Neighbours
+
+We read in the data set using the following code.
+
+```{r, out.width='25%', fig.align='center', fig.cap='lel'}
+
+
+```
+
+
+# Evaluation
+
+Initially we fit a full regression model using the code snippet below.
+
+```{r}
+
+```
+
+
+# Discussion
+
+
+# Conclusion
+
+
+\newpage
+
+# References
+

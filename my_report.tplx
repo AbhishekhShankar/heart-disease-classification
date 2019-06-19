@@ -1,0 +1,24 @@
+% Modified based on
+% jupyter nbconvert --to pdf phase1.ipynb --template my_report.tplx
+((*- extends 'report.tplx' -*))
+
+% Author info
+((* block title *))
+\title{
+	MATH2319 Machine Learning Project Phase 1\\
+	Classification of Heart Disease Within Individuals
+}
+((* endblock title *))
+
+% Author info
+((* block author *))
+\author{
+  \textbf{Names}: Abhishekh Shankar \& Eric Bolitho\\
+  \textbf{Student ID}: s3652116 \& s3455890
+}
+((* endblock author *))
+
+((* block bibliography *))
+\bibliographystyle{unsrt}
+\bibliography{references.bib}
+((* endblock bibliography *))
